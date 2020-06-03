@@ -8,7 +8,7 @@ exports.htmlPage = (title, filename, chunks, template) => new HtmlWebpackPlugin(
   cache: true,
   inject: 'body',
   filename: './pages/' + filename + '.html',
-  template: template || resolve(__dirname, './page.ejs'),
+  template: template || resolve(__dirname, '../public/page.ejs'),
   appMountId: 'app',
   chunks
 })

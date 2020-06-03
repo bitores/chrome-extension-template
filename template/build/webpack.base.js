@@ -4,7 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const ChromeReloadPlugin = require('wcer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 {{#if components.locales}}
-const GenerateLocaleJsonPlugin = require('../plugins/GenerateLocaleJsonPlugin')
+const GenerateLocaleJsonPlugin = require('./GenerateLocaleJsonPlugin')
 {{/if}}
 const { cssLoaders, htmlPage } = require('./tools')
 

@@ -7,9 +7,8 @@
 
   {{/if}}
   export default {
-    data(){
-      return {}
-    },
+    data:()=>({
+    }),
     computed: { },
     created () {
       {{#if components.locales}}

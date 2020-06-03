@@ -32,14 +32,14 @@ module.exports = {
       type: 'checkbox',
       message: 'Select components',
       name: 'components',
-      default: [ 'background', 'contentScript', 'optionPage' ],
+      default: [ 'background', 'contentScript', 'popupTab' ],
       choices: [
-        { name: 'background (https://developer.chrome.com/extensions/background_pages)', value: 'background', short: 'background' },
-        { name: 'content script (https://developer.chrome.com/extensions/content_scripts)', value: 'contentScript', short: 'content script' },
-        { name: 'option page (https://developer.chrome.com/extensions/options)', value: 'optionPage', short: 'option page' },
+        { name: 'background', value: 'background', short: 'background' },
+        { name: 'content script', value: 'contentScript', short: 'content script' },
         { name: 'popup and tab', value: 'popupTab' },
-        { name: 'locales (https://developer.chrome.com/extensions/i18n)', value: 'locales', short: 'locales' },
-        { name: 'devtool (https://developer.chrome.com/extensions/devtools)', value: 'devtool', short: 'devtool' }
+        { name: 'option page', value: 'optionPage', short: 'option page' },
+        { name: 'locales', value: 'locales', short: 'locales' },
+        { name: 'devtool', value: 'devtool', short: 'devtool' }
       ]
     },
     autoInstall: {
