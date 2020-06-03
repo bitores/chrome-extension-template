@@ -44,7 +44,7 @@ module.exports = {
   content_scripts: [{
     js: [
       'js/manifest.js',
-      'js/vendor.js',
+      'js/vendors.js',
       'js/content.js'
     ],
     run_at: 'document_end',

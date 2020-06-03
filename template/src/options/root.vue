@@ -22,7 +22,7 @@
     methods: { }
   }
 </script>
-<style>
+<style lang="less">
   div {
     color: blue
   }
