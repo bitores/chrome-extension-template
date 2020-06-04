@@ -109,7 +109,7 @@ module.exports = {
     new CleanWebpackPlugin(['*'], { root: path.join(rootDir, 'dist') }),
     // Customize your extension structure.
     {{#if components.popupTab}}
-    htmlPage('home', 'app', ['commons', 'vendors', 'tab']),
+    htmlPage('tab', 'tab', ['commons', 'vendors', 'tab']),
     htmlPage('popup', 'popup', ['commons', 'vendors', 'popup']),
     {{/if}}
     {{#if components.devtool}}
