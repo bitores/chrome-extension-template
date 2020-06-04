@@ -43,7 +43,7 @@ module.exports = {
   {{#if components.contentScript}}
   content_scripts: [{
     js: [
-      'js/manifest.js',
+      'js/commons.js',
       'js/vendors.js',
       'js/content.js'
     ],

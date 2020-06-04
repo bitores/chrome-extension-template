@@ -14,7 +14,7 @@ const rootDir = path.resolve(__dirname, '..')
 let resolve = (dir) => path.join(rootDir, 'src', dir)
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     {{#if components.popupTab}}
     popup: resolve('./popup'),
@@ -109,18 +109,18 @@ module.exports = {
     new CleanWebpackPlugin(['*'], { root: path.join(rootDir, 'dist') }),
     // Customize your extension structure.
     {{#if components.popupTab}}
-    htmlPage('home', 'app', ['manifest', 'vendor', 'tab']),
-    htmlPage('popup', 'popup', ['manifest', 'vendor', 'popup']),
+    htmlPage('home', 'app', ['commons', 'vendors', 'tab']),
+    htmlPage('popup', 'popup', ['commons', 'vendors', 'popup']),
     {{/if}}
     {{#if components.devtool}}
-    htmlPage('panel', 'panel', ['manifest', 'vendor', 'panel']),
-    htmlPage('devtools', 'devtools', ['manifest', 'vendor', 'devtools']),
+    htmlPage('panel', 'panel', ['commons', 'vendors', 'panel']),
+    htmlPage('devtools', 'devtools', ['commons', 'vendors', 'devtools']),
     {{/if}}
     {{#if components.optionPage}}
-    htmlPage('options', 'options', ['manifest', 'vendor', 'options']),
+    htmlPage('options', 'options', ['commons', 'vendors', 'options']),
     {{/if}}
     {{#if components.background}}
-    htmlPage('background', 'background', ['manifest', 'vendor', 'background']),
+    htmlPage('background', 'background', ['commons', 'vendors', 'background']),
     {{/if}}
     // End customize
     new CopyWebpackPlugin([{ from: path.join(rootDir, 'static') }]),
@@ -148,17 +148,18 @@ module.exports = {
       cacheGroups: { //缓存组，将所有加载模块放在缓存里面一起分割打包
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: "manifest",
+          name: "commons",
           chunks: "initial",
           minSize: 0,
           minChunks: 2,
           priority: 1, // 优先级，默认是0，可以为负数
-          filename: 'js/manifest.js'
+          filename: 'js/commons.js'
         },
         vendors: {  //自定义打包模块
           test: /[\\/]node_modules[\\/]/,
           priority: -10, //优先级，先打包到哪个组里面，值越大，优先级越高
           minSize: 0,
+          name: 'vendors',
           filename: 'js/vendors.js',
         },
         default: {
