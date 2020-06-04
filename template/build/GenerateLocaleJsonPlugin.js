@@ -25,7 +25,7 @@ module.exports = class GenerateLocaleJsonPlugin {
         mod.filename = filename
         mod._compile(code, filename)
         mod.paths = Module._nodeModulePaths(filename)
-        this._locales.push({
+        files.push({
           localeName,
           content: mod.exports,
           src: join(dirPath, 'messages.js')
