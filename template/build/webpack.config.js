@@ -5,12 +5,12 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin");//用来抽离单独抽离css文件
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css插件
 {{#if components.locales}}
-const GenerateLocaleJsonPlugin = require('./build/GenerateLocaleJsonPlugin')
+const GenerateLocaleJsonPlugin = require('./GenerateLocaleJsonPlugin')
 {{/if}}
-const { cssLoaders, htmlPage } = require('./build/tools')
+const { cssLoaders, htmlPage } = require('./tools')
 
 
-const rootDir = path.resolve(__dirname, '.')
+const rootDir = path.resolve(__dirname, '..')
 let resolve = (dir) => path.join(rootDir, 'src', dir)
 
 module.exports = {

@@ -53,7 +53,7 @@ module.exports = {
   }],
   {{/if}}
   {{#if components.locales}}
-  default_locale: 'en',
+  default_locale: 'zh_CN',
   {{/if}}
   manifest_version: 2,
   content_security_policy: "script-src 'self'; object-src 'self'",

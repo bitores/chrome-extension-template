@@ -14,6 +14,8 @@ module.exports = class GenerateLocaleJsonPlugin {
 
   compile (comp) {
     const dirsPath = getDirectories(this.__localesPath)
+    
+    let files=[];
     dirsPath.forEach((dirPath) => {
       try {
         const localeName = parse(dirPath).base
@@ -32,13 +34,18 @@ module.exports = class GenerateLocaleJsonPlugin {
         console.error(err)
       }
     })
+    this._locales = files;
   }
 
   generate (comp, done) {
+    if(!comp.contextDependencies.has(this.__localesPath)) {
+      comp.contextDependencies.add(this.__localesPath)
+    }
+    
     if (!this._locales.length) return done()
 
+    
     for (let locale of this._locales) {
-      comp.fileDependencies.push(locale.src)
       const source = JSON.stringify(locale.content)
       comp.assets[join('_locales', locale.localeName, 'messages.json')] = {
         source: () => source,
