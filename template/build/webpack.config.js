@@ -123,14 +123,14 @@ module.exports = {
     htmlPage('background', 'background', ['commons', 'vendors', 'background']),
     {{/if}}
     // End customize
-    new CopyWebpackPlugin([{ from: path.join(rootDir, 'static') }]),
+    new CopyWebpackPlugin([{ from: path.join(rootDir, 'config', 'icons'), to: path.join(rootDir, 'dist', 'icons') }]),
     new ChromeReloadPlugin({
       port: 9090,
-      manifest: path.join(rootDir, 'src', 'manifest.js')
+      manifest: path.join(rootDir, 'config', 'manifest.js')
     }),
     {{#if components.locales}}
     new GenerateLocaleJsonPlugin({
-      _locales: path.join(rootDir, 'src', '_locales')
+      _locales: path.join(rootDir, 'conifg', '_locales')
     }),
     {{/if}}
   ],
@@ -159,6 +159,7 @@ module.exports = {
           test: /[\\/]node_modules[\\/]/,
           priority: -10, //优先级，先打包到哪个组里面，值越大，优先级越高
           minSize: 0,
+          chunks: 'all',
           name: 'vendors',
           filename: 'js/vendors.js',
         },
